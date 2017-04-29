@@ -1,2 +1,0 @@
-# PsTorrent
-PsTorrent - A PowerShell module for EZTV, YTS, and PirateBay
