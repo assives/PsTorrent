@@ -9,7 +9,7 @@ with Magnet Links. qBittorent, uTorrent, etc for downloading torrents to work.
 It is best to already have the torrent client application running before running these commands,
 but is not required.
 
-#Instructions
+# Instructions
 
 ```powershell
 # One time setup
