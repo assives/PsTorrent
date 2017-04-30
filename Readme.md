@@ -29,10 +29,10 @@ but is not required.
     Get-Help Get-NewMovieRelease
 ```
 
-#Examples
+# Examples
 
 
-###Seaching the PirateBay
+### Seaching the PirateBay
 ```PowerShell
 # Search the PirateBay and Download the selected torrents
 
@@ -43,7 +43,7 @@ $Selected | Start-MagnetLink
 
 ```
 
-###Search EZTV for TV Shows
+### Search EZTV for TV Shows
 ```PowerShell
 # Search EZTV for a specific show and season, in this case season 7 of The Walking Dead and only 720p videos
 $WalkingDead = Search-EZTV -Filter "Walking Dead"
@@ -53,13 +53,13 @@ $SeasonSeven | ForEach-Object {
 }
 ```
 
-###Use EZTV API
+### Use EZTV API
 ```PowerShell
 # Get the first ten results from the API and download them
 Get-EZTVApi | Start-MagnetLink
 ```
 
-###Search YTS for a movie
+### Search YTS for a movie
 ```PowerShell
 # Search YTS for a specific movie, in this case La La Land in 720p, and start a download of it.
 Get-YTSMovies -Movie "La La Land" -Quality 720p |
