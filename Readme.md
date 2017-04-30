@@ -53,6 +53,12 @@ $SeasonSeven | ForEach-Object {
 }
 ```
 
+###Use EZTV API
+```PowerShell
+# Get the first ten results from the API and download them
+Get-EZTVApi | Start-MagnetLink
+```
+
 ###Search YTS for a movie
 ```PowerShell
 # Search YTS for a specific movie, in this case La La Land in 720p, and start a download of it.
