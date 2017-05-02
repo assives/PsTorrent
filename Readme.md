@@ -65,3 +65,11 @@ Get-EZTVApi | Start-MagnetLink
 Get-YTSMovies -Movie "La La Land" -Quality 720p |
 Start-MagnetLink
 ```
+
+### Search Torrentz
+```PowerShell
+# Search torrentz.ht, select the results using Out-GridView and start a download of selected ones.
+$LinuxOS = Search-Torrentz -Query "ubuntu iso"
+$LinuxOS | Out-GridView -PassThru |
+Start-MagnetLink
+```
