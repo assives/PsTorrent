@@ -36,7 +36,7 @@ Function Format-EZTVShowEpisodes
                                                                                                                 } -Force
         Update-TypeData -TypeName "EZTV.ShowEpisodes" -MemberType ScriptProperty -MemberName MagnetURI -Value {$this.href} -Force
 
-        Update-TypeData -TypeName "EZTV.ShowEpisodes" -MemberType ScriptProperty -MemberName FileSize -Value {$SizeString = ($this.title -split '\(')[-1] -replace "\).*"
+        Update-TypeData -TypeName "EZTV.ShowEpisodes" -MemberType ScriptProperty -MemberName Size -Value {$SizeString = ($this.title -split '\(')[-1] -replace "\).*"
                                                                                                                $Unit = $SizeString -replace ".*\s+"
                                                                                                                 Convert-Size -To Bytes -From $Unit -Value $($SizeString -replace "\s+.*")
                                                                                                                 } -Force

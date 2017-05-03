@@ -7,11 +7,11 @@ Function Search-EZTV
         Function for performing a search on EZTV. Returns the magnet links found as a EZTV.ShowEpisode object.
         That object can be piped to the New-EZTVRssFeed function.
     .EXAMPLE
-        Search-EZTV -Filter "Once Upon A Time"
+        Search-EZTV -Query "Once Upon A Time"
         Returns the magent links found for a search for Once Upon A Time on EZTV's website.
     .EXAMPLE
         $Show = Read-Host "Enter a show name to search EZTV for"
-        $SearchTest = Search-EZTV -Filter "$Show"
+        $SearchTest = Search-EZTV -$Query "$Show"
         $SearchTest | Where {$_.Season -eq 6 -and $_.ShowName -like "*$Show*"} | 
         New-EZTVRssFeed -ShowName $Show | Out-File ".\$($Show) Feed.xml"
 
@@ -28,14 +28,17 @@ Function Search-EZTV
 	(
 		[Parameter(Mandatory=$True,
 		ValueFromPipeline=$True, ValueFromPipelinebyPropertyName=$true)]
-		[string]$Filter
+		[string[]]$Query
 	)
 	Begin{}
     Process
     {
-        $Filter = $Filter -replace " ","-"
-        $SearchResults = Invoke-Webrequest "$($EZTVBaseURI)/search/$($Filter)"
-        $SearchMagnetLinks = $SearchResults.Links | Where {$_.class -eq "magnet"} | Format-EZTVShowEpisodes
-        $SearchMagnetLinks
+        foreach($Filter in $Query)
+        {
+            $Filter = $Filter -replace " ","-"
+            $SearchResults = Invoke-Webrequest "$($EZTVBaseURI)/search/$($Filter)"
+            $SearchMagnetLinks = $SearchResults.Links | Where {$_.class -eq "magnet"} | Format-EZTVShowEpisodes
+            $SearchMagnetLinks
+        }
     }  
 }
