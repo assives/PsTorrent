@@ -1,7 +1,9 @@
 PsTorrent
 ==========
 
-This is a PowerShell module for working with torrents from EZTV, YTS, and the PirateBay.
+This is a PowerShell module for working with torrents from EZTV, YTS, ExtraTorrnet, Torrentz, and the PirateBay.
+If you would like another site to be added, use the Issues feature here.
+
 Returns objects that have magnet uris as properties.
 This module requires a torrent client to already be installed and set to be associated
 with Magnet Links. qBittorent, uTorrent, etc for downloading torrents to work.
@@ -71,5 +73,25 @@ Start-MagnetLink
 # Search torrentz.ht, select the results using Out-GridView and start a download of selected ones.
 $LinuxOS = Search-Torrentz -Query "ubuntu iso"
 $LinuxOS | Out-GridView -PassThru |
+Start-MagnetLink
+```
+
+### Search ExtraTorrent
+```PowerShell
+# Search ExtraTorrnet, select the results using Out-GridView and start a download of the selected ones.
+$Vernes = Search-ExtraTorrent -Query "Jules Verne"
+$Selected = $Vernes | Out-GridView -PassThru
+$Selected | ForEach-Object {
+    $_.DownloadTorrent()
+}
+```
+
+### Search All
+```PowerShell
+# Search using all of the Search functions in the module
+$AllResults = Search-AllTorrents -Query "Limitless"
+
+# Pick from menu what to download
+$AllResults | Out-GridView -PassThru |
 Start-MagnetLink
 ```
